@@ -1,0 +1,26 @@
+{
+    "name": "zeleniy/leetcode",
+    "config": {
+        "vendor-dir": "phpvendor"
+    },
+    "autoload": {
+        "psr-4": {
+            "Zeleniy\\Leetcode\\LongestSubstringWithoutRepeatingCharacters\\": "longest-substring-without-repeating-characters",
+            "Zeleniy\\Leetcode\\MinimumSizeSubarraySum\\": "minimum-size-subarray-sum",
+            "Zeleniy\\Leetcode\\MergeIntervals\\": "merge-intervals",
+            "Zeleniy\\Leetcode\\ValidPalindrome\\": "valid-palindrome",
+            "Zeleniy\\Leetcode\\BinaryTreeMaximumPathSum\\": "binary-tree-maximum-path-sum",
+            "Zeleniy\\Leetcode\\ValidateBinarySearchTree\\": "validate-binary-search-tree",
+            "Zeleniy\\Leetcode\\ReverseLinkedList\\": "reverse-linked-list",
+            "Zeleniy\\Leetcode\\ClimbingStairs\\": "climbing-stairs",
+            "Zeleniy\\Leetcode\\ValidParentheses\\": "valid-parentheses",
+            "Zeleniy\\Leetcode\\FirstUniqueCharacterInString\\": "first-unique-character-in-a-string",
+            "Zeleniy\\Leetcode\\ContainsDuplicate\\": "contains-duplicate",
+            "Zeleniy\\Leetcode\\ValidAnagram\\": "valid-anagram",
+            "Zeleniy\\Leetcode\\SubarraySumEqualsK\\": "subarray-sum-equals-k"
+        }
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^12.1"
+    }
+}
