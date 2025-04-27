@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<phpunit
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:noNamespaceSchemaLocation="vendor/phpunit/phpunit/phpunit.xsd"
+    cacheDirectory=".phpunit.cache"
+    executionOrder="depends,defects"
+    beStrictAboutOutputDuringTests="true"
+    displayDetailsOnPhpunitDeprecations="true"
+    failOnPhpunitDeprecation="true"
+    failOnRisky="true"
+    failOnWarning="true"
+    colors="true"
+>
+    <testsuites>
+        <testsuite name="default">
+            <directory>longest-substring-without-repeating-characters</directory>
+            <directory>minimum-size-subarray-sum</directory>
+            <directory>merge-intervals</directory>
+            <directory>valid-palindrome</directory>
+            <directory>binary-tree-maximum-path-sum</directory>
+            <directory>validate-binary-search-tree</directory>
+            <directory>reverse-linked-list</directory>
+            <directory>climbing-stairs</directory>
+            <directory>valid-parentheses</directory>
+            <directory>first-unique-character-in-a-string</directory>
+            <directory>contains-duplicate</directory>
+            <directory>valid-anagram</directory>
+        </testsuite>
+    </testsuites>
+</phpunit>
