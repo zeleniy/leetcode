@@ -20,7 +20,6 @@ func TestAddTwoNumbers(t *testing.T) {
 
 		for _, val := range dataSet.answer {
 			assert.Equal(t, val, head.Val)
-			assert.True(t, true)
 			head = head.Next
 		}
 	}
