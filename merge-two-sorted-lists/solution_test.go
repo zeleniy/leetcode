@@ -12,11 +12,24 @@ type TestCase struct {
 	b      *ListNode
 }
 
-func TestAddTwoNumbers(t *testing.T) {
+func TestMergeTwoLists(t *testing.T) {
 
 	for _, dataSet := range getTestDataSet() {
 
 		head := mergeTwoLists(dataSet.a, dataSet.b)
+
+		for _, val := range dataSet.answer {
+			assert.Equal(t, val, head.Val)
+			head = head.Next
+		}
+	}
+}
+
+func TestMergeTwoListsRecursive(t *testing.T) {
+
+	for _, dataSet := range getTestDataSet() {
+
+		head := mergeTwoListsRecursive(dataSet.a, dataSet.b)
 
 		for _, val := range dataSet.answer {
 			assert.Equal(t, val, head.Val)
