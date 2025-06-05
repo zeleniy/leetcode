@@ -5,6 +5,27 @@ type ListNode struct {
 	Next *ListNode
 }
 
+// Merge two linked lists recursively.
+func mergeTwoListsRecursive(list1 *ListNode, list2 *ListNode) *ListNode {
+
+	if list1 == nil {
+		return list2
+	}
+
+	if list2 == nil {
+		return list1
+	}
+
+	if list1.Val < list2.Val {
+		list1.Next = mergeTwoListsRecursive(list1.Next, list2)
+		return list1
+	} else {
+		list2.Next = mergeTwoListsRecursive(list2.Next, list1)
+		return list2
+	}
+}
+
+// Merge two linked lists iteratively.
 func mergeTwoLists(list1 *ListNode, list2 *ListNode) *ListNode {
 
 	dummyHead := &ListNode{}
