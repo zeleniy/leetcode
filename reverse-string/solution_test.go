@@ -11,16 +11,28 @@ type TestCaseDataSet struct {
 	word   []byte
 }
 
-func TestGenerateTrees(t *testing.T) {
+func TestReverseStringRecursive(t *testing.T) {
 
 	for _, dataSet := range getTestDataSet() {
+		reverseStringRecursive(dataSet.word)
+		testReverseString(t, dataSet)
+	}
+}
 
-		reverseString(dataSet.word)
-		assert.Equal(t, len(dataSet.answer), len(dataSet.word))
+func TestReverseStringIterative(t *testing.T) {
 
-		for i, _ := range dataSet.word {
-			assert.Equal(t, dataSet.answer[i], dataSet.word[i])
-		}
+	for _, dataSet := range getTestDataSet() {
+		reverseStringIterative(dataSet.word)
+		testReverseString(t, dataSet)
+	}
+}
+
+func testReverseString(t *testing.T, dataSet TestCaseDataSet) {
+
+	assert.Equal(t, len(dataSet.answer), len(dataSet.word))
+
+	for i := range dataSet.word {
+		assert.Equal(t, dataSet.answer[i], dataSet.word[i])
 	}
 }
 
