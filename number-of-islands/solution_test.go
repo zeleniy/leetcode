@@ -1,4 +1,4 @@
-package reverse_string
+package number_of_islands
 
 import (
 	"testing"

@@ -1,4 +1,4 @@
-package reverse_string
+package number_of_islands
 
 var neighbors = [][]int{{-1, 0}, {1, 0}, {0, -1}, {0, 1}}
 
