@@ -11,10 +11,35 @@ type TestCaseDataSet struct {
 	grid   [][]byte
 }
 
-func TestNumIslands(t *testing.T) {
+func BenchmarkNumIslandsDfs(b *testing.B) {
 
-	for _, dataSet := range getTestDataSet() {
-		assert.Equal(t, dataSet.answer, numIslands(dataSet.grid))
+	for i := 0; i < b.N; i++ {
+		for _, data := range getTestDataSet() {
+			numIslandsDfs(data.grid)
+		}
+	}
+}
+
+func TestNumIslandsDfs(t *testing.T) {
+
+	for _, data := range getTestDataSet() {
+		assert.Equal(t, data.answer, numIslandsDfs(data.grid))
+	}
+}
+
+func BenchmarkNumIslandsBfs(b *testing.B) {
+
+	for i := 0; i < b.N; i++ {
+		for _, data := range getTestDataSet() {
+			numIslandsBfs(data.grid)
+		}
+	}
+}
+
+func TestNumIslandsBfs(t *testing.T) {
+
+	for _, data := range getTestDataSet() {
+		assert.Equal(t, data.answer, numIslandsBfs(data.grid))
 	}
 }
 
@@ -32,6 +57,12 @@ func getTestDataSet() []TestCaseDataSet {
 			{'1', '1', '0', '0', '0'},
 			{'0', '0', '1', '0', '0'},
 			{'0', '0', '0', '1', '1'},
+		}},
+		{3, [][]byte{
+			{'1', '0', '1', '1', '0', '1', '1'},
+		}},
+		{1, [][]byte{
+			{'1', '1', '1', '1', '1', '1', '1'},
 		}},
 	}
 }
