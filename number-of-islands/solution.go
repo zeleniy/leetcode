@@ -1,6 +1,6 @@
 package number_of_islands
 
-var neighbors = [][]int{{-1, 0}, {1, 0}, {0, -1}, {0, 1}}
+var neighbors = [4][2]int{{-1, 0}, {1, 0}, {0, -1}, {0, 1}}
 
 func numIslandsDfs(grid [][]byte) int {
 
@@ -22,7 +22,9 @@ func numIslandsDfs(grid [][]byte) int {
 
 func markIslandDfs(grid [][]byte, m, n, i, j int) {
 
-	stack := [][]int{{i, j}}
+	stack := make([][2]int, 1, 8)
+	stack[0] = [2]int{i, j}
+	grid[i][j] = '0'
 
 	for len(stack) > 0 {
 
@@ -35,7 +37,7 @@ func markIslandDfs(grid [][]byte, m, n, i, j int) {
 			y, x := i-neighbor[0], j-neighbor[1]
 			if y >= 0 && y < m && x >= 0 && x < n && grid[y][x] == '1' {
 				grid[y][x] = '0'
-				stack = append(stack, []int{y, x})
+				stack = append(stack, [2]int{y, x})
 			}
 		}
 	}
@@ -51,7 +53,6 @@ func numIslandsBfs(grid [][]byte) int {
 		for j := 0; j < n; j++ {
 			if grid[i][j] == '1' {
 				counter++
-				grid[i][j] = '0'
 				markIslandBfs(grid, m, n, i, j)
 			}
 		}
@@ -62,7 +63,9 @@ func numIslandsBfs(grid [][]byte) int {
 
 func markIslandBfs(grid [][]byte, m, n, i, j int) {
 
-	queue := [][]int{{i, j}}
+	queue := make([][2]int, 1, 8)
+	queue[0] = [2]int{i, j}
+	grid[i][j] = '0'
 
 	for len(queue) > 0 {
 
@@ -72,7 +75,7 @@ func markIslandBfs(grid [][]byte, m, n, i, j int) {
 			y, x := i-neighbor[0], j-neighbor[1]
 			if y >= 0 && y < m && x >= 0 && x < n && grid[y][x] == '1' {
 				grid[y][x] = '0'
-				queue = append(queue, []int{y, x})
+				queue = append(queue, [2]int{y, x})
 			}
 		}
 
