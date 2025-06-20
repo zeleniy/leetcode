@@ -12,7 +12,7 @@ func duplicateZeros(arr []int) {
 	}
 
 	left, right := n-1, n-1+zeroCount
-	for left >= 0 {
+	for left < right {
 		if right < n {
 			arr[right] = arr[left]
 		}
