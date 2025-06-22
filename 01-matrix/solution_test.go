@@ -20,7 +20,7 @@ func BenchmarkUpdateMatrix(b *testing.B) {
 	}
 }
 
-func TestBenchmarkUpdateMatrix(t *testing.T) {
+func TestUpdateMatrix(t *testing.T) {
 	for _, data := range getTestDataSet() {
 		assert.Equal(t, data.answer, updateMatrix(data.mat))
 	}
