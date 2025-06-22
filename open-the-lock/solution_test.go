@@ -12,10 +12,19 @@ type TestCaseDataSet struct {
 	deadends []string
 }
 
+func BenchmarkOpenLock(b *testing.B) {
+
+	for i := 0; i < b.N; i++ {
+		for _, data := range getTestDataSet() {
+			openLock(data.deadends, data.target)
+		}
+	}
+}
+
 func TestOpenLock(t *testing.T) {
 
-	for _, dataSet := range getTestDataSet() {
-		assert.Equal(t, dataSet.answer, openLock(dataSet.deadends, dataSet.target))
+	for _, data := range getTestDataSet() {
+		assert.Equal(t, data.answer, openLock(data.deadends, data.target))
 	}
 }
 
