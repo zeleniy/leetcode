@@ -17,7 +17,8 @@
             "Zeleniy\\Leetcode\\FirstUniqueCharacterInString\\": "first-unique-character-in-a-string",
             "Zeleniy\\Leetcode\\ContainsDuplicate\\": "contains-duplicate",
             "Zeleniy\\Leetcode\\ValidAnagram\\": "valid-anagram",
-            "Zeleniy\\Leetcode\\SubarraySumEqualsK\\": "subarray-sum-equals-k"
+            "Zeleniy\\Leetcode\\SubarraySumEqualsK\\": "subarray-sum-equals-k",
+            "Zeleniy\\Leetcode\\TwoSum\\": "two-sum"
         }
     },
     "require-dev": {

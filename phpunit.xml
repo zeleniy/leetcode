@@ -25,6 +25,7 @@
             <directory>first-unique-character-in-a-string</directory>
             <directory>contains-duplicate</directory>
             <directory>valid-anagram</directory>
+            <directory>two-sum</directory>
         </testsuite>
     </testsuites>
 </phpunit>
