@@ -1,4 +1,16 @@
+#
+# Composer's dependencies
+#
 phpvendor/
+
+#
+# Dependency-related files
+#
+.phpbench/
 .phpunit.cache/
 .phpunit.result.cache
+
+#
+# IDE-specific files
+#
 .vscode/
