@@ -4,39 +4,85 @@ namespace Zeleniy\Leetcode\ValidAnagram;
 
 class Solution {
 
-    function isAnagram($s, $t) {
+    function isAnagramWithCountChars($s, $t) {
+
+        $sFrequencyMap = count_chars($s, 1);
+        $tFrequencyMap = count_chars($t, 1);
+
+        if (count($sFrequencyMap) != count($tFrequencyMap)) {
+            return false;
+        }
+
+        foreach ($sFrequencyMap as $k => $v) {
+            if (! isset($tFrequencyMap[$k]) || $tFrequencyMap[$k] != $v) {
+                return false;
+            }
+        }
+
+        return true;
+    }
+
+    function isAnagramWithHashMap($s, $t) {
+
+        $n = \strlen($s);
+        $m = \strlen($t);
+
+        if ($n != $m) {
+            return false;
+        }
 
         $frequencyMap = [];
-        $strLength = \strlen($s);
 
-        for ($i = 0; $i < $strLength; $i ++) {
+        for ($i = 0; $i < $n; $i ++) {
 
-            $char = $s[$i];
+            $charS = $s[$i];
+            $charT = $t[$i];
 
-            if (isset($frequencyMap[$char])) {
-                $frequencyMap[$char] ++;
+            if (isset($frequencyMap[$charS])) {
+                $frequencyMap[$charS] ++;
             } else {
-                $frequencyMap[$char] = 1;
+                $frequencyMap[$charS] = 1;
+            }
+
+            if (isset($frequencyMap[$charT])) {
+                $frequencyMap[$charT] --;
+            } else {
+                $frequencyMap[$charT] = -1;
             }
         }
 
-        $strLength = \strlen($t);
-
-        for ($i = 0; $i < $strLength; $i ++) {
-
-            $char = $t[$i];
-
-            if (! isset($frequencyMap[$char])) {
-                return false;
-            }
-
-            $frequencyMap[$char] --;
-
-            if ($frequencyMap[$char] < 0) {
+        foreach ($frequencyMap as $frequency) {
+            if ($frequency !== 0) {
                 return false;
             }
         }
 
-        return \array_sum($frequencyMap) == 0;
+        return true;
+    }
+
+    function isAnagramWithFixedArray($s, $t) {
+
+        $n = \strlen($s);
+        $m = \strlen($t);
+
+        if ($n != $m) {
+            return false;
+        }
+
+        $a = \ord('a');
+        $frequencyMap = new \SplFixedArray(26);
+
+        for ($i = 0; $i < $n; $i ++) {
+            $frequencyMap[\ord($s[$i]) - $a] += 1;
+            $frequencyMap[\ord($t[$i]) - $a] -= 1;
+        }
+
+        foreach ($frequencyMap as $frequency) {
+            if ($frequency !== null && $frequency !== 0) {
+                return false;
+            }
+        }
+
+        return true;
     }
 }

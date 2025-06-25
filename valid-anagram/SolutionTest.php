@@ -2,7 +2,7 @@
 
 namespace Zeleniy\Leetcode\ValidAnagram;
 
-use PHPUnit\Framework\Attributes\DataProvider;
+use PHPUnit\Framework\Attributes\DataProviderExternal;
 use PHPUnit\Framework\TestCase;
 
 class SolutionTest extends TestCase
@@ -14,18 +14,21 @@ class SolutionTest extends TestCase
         $this->solution = new Solution();
     }
 
-    #[DataProvider('withContainsDuplicate')]
-    function testContainsDuplicate(bool $answer, string $s1, string $s2)
+    #[DataProviderExternal(DataSet::class, 'getData')]
+    function testIsAnagramWithCountChars(bool $answer, string $s1, string $s2)
     {
-        $this->assertEquals($answer, $this->solution->isAnagram($s1, $s2));
+        $this->assertEquals($answer, $this->solution->isAnagramWithCountChars($s1, $s2));
     }
 
-    public static function withContainsDuplicate() {
+    #[DataProviderExternal(DataSet::class, 'getData')]
+    function testIsAnagramWithHashMap(bool $answer, string $s1, string $s2)
+    {
+        $this->assertEquals($answer, $this->solution->isAnagramWithHashMap($s1, $s2));
+    }
 
-        return [
-            [true,  'anagram', 'nagaram'],
-            [false, 'rat', 'car'],
-            [false, 'aacc', 'ccac'],
-        ];
+    #[DataProviderExternal(DataSet::class, 'getData')]
+    function testIsAnagramWithFixedArray(bool $answer, string $s1, string $s2)
+    {
+        $this->assertEquals($answer, $this->solution->isAnagramWithFixedArray($s1, $s2));
     }
 }
