@@ -2,7 +2,7 @@
 
 namespace Zeleniy\Leetcode\ReverseLinkedList;
 
-use PHPUnit\Framework\Attributes\DataProvider;
+use PHPUnit\Framework\Attributes\DataProviderExternal;
 use PHPUnit\Framework\TestCase;
 
 class SolutionTest extends TestCase
@@ -14,17 +14,16 @@ class SolutionTest extends TestCase
         $this->solution = new Solution();
     }
 
-    #[DataProvider('withReverseList')]
-    function testReverseList(array $answer, array $intervals)
+    #[DataProviderExternal(DataSet::class, 'getData')]
+    function testReverseList(array $answer, null|ListNode $head)
     {
-        $this->markTestIncomplete();
-        $this->assertEquals($answer, $this->solution->reverseList($intervals));
-    }
+        $head = $this->solution->reverseList($head);
 
-    public static function withReverseList() {
+        foreach ($answer as $value) {
+            $this->assertEquals($value, $head->val);
+            $head = $head->next;
+        }
 
-        return [
-            [[1, 2, 3], [3, 2, 1]]
-        ];
+        $this->assertNull($head);
     }
 }

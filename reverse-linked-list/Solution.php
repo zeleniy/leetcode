@@ -6,15 +6,10 @@ class Solution {
 
     function reverseList($head) {
 
-        if ($head === null || $head->next === null) {
-            return $head;
-        }
-
         $prev = null;
         $curr = $head;
 
-        while ($curr !=- null) {
-
+        while ($curr) {
             $next       = $curr->next;
             $curr->next = $prev;
             $prev       = $curr;
