@@ -2,8 +2,8 @@
 
 namespace Zeleniy\Leetcode\ReverseLinkedList;
 
-class DataSet
-{
+class DataSet {
+
     public static function getData() {
 
         return [

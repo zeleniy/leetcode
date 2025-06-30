@@ -2,15 +2,12 @@
 
 namespace Zeleniy\Leetcode\ReverseLinkedList;
 
-/**
- *
- */
-class SolutionBench
-{
+class SolutionBench {
+
     private Solution $solution;
 
-    public function __construct()
-    {
+    public function __construct() {
+
         $this->solution = new Solution();
     }
 
@@ -18,10 +15,21 @@ class SolutionBench
      * @Revs(1000)
      * @Iterations(5)
      */
-    function benchReverseList()
-    {
+    public function benchReverseListRecursive() {
+
         foreach (DataSet::getData() as $data) {
-            $this->solution->reverseList($data[1]);
+            $this->solution->reverseListRecursive($data[1]);
+        }
+    }
+
+    /**
+     * @Revs(1000)
+     * @Iterations(5)
+     */
+    public function benchReverseListIterative() {
+
+        foreach (DataSet::getData() as $data) {
+            $this->solution->reverseListIterative($data[1]);
         }
     }
 }
