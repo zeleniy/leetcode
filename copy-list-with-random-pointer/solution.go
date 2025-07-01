@@ -8,32 +8,35 @@ type Node struct {
 
 func copyRandomList(head *Node) *Node {
 
-	current := head
-
-	for current != nil {
-		copy := &Node{Val: current.Val}
-		copy.Next = current.Next
-		current.Next = copy
-		current = copy.Next
+	if head == nil {
+		return nil
 	}
 
+	curr := head
+	for curr != nil {
+		clone := &Node{Val: curr.Val, Next: curr.Next}
+		curr.Next = clone
+		curr = clone.Next
+	}
+
+	curr = head
+	for curr != nil {
+		if curr.Random != nil {
+			curr.Next.Random = curr.Random.Next
+		}
+		curr = curr.Next.Next
+	}
+
+	curr = head
 	newHead := head.Next
-	current = head
 
-	for ; current != nil; current = current.Next.Next {
-		if current.Random != nil {
-			current.Next.Random = current.Random.Next
+	for curr != nil {
+		clone := curr.Next
+		curr.Next = clone.Next
+		if clone.Next != nil {
+			clone.Next = clone.Next.Next
 		}
-	}
-
-	current = head
-
-	for current != nil && current.Next != nil {
-		copy := current.Next
-		current = copy.Next
-		if copy.Next != nil {
-			copy.Next = copy.Next.Next
-		}
+		curr = curr.Next
 	}
 
 	return newHead
