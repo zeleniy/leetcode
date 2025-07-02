@@ -12,7 +12,7 @@ type TestCaseDataSet struct {
 	l2     *ListNode
 }
 
-func BenchmarkIsPalindromeWithTwoPointers(b *testing.B) {
+func BenchmarkAddTwoNumbers(b *testing.B) {
 
 	dataSet := getTestDataSet()
 
@@ -23,7 +23,7 @@ func BenchmarkIsPalindromeWithTwoPointers(b *testing.B) {
 	}
 }
 
-func TestIsPalindromeWithTwoPointers(t *testing.T) {
+func TestAddTwoNumbers(t *testing.T) {
 
 	for _, data := range getTestDataSet() {
 
