@@ -7,27 +7,23 @@ class Solution {
     function lengthOfLongestSubstring($s) {
 
         $n = strlen($s);
+        $charMap = [];
+        $left = 0;
+        $maxLen = 0;
 
-        if ($n < 2) {
-            return $n;
-        }
+        for ($right = 0; $right < $n; $right ++) {
 
-        $i = [];
-        $l = 0;
-        $m = 0;
+            $char = $s[$right];
 
-        for ($r = 0; $r < $n; $r ++) {
-
-            $c = $s[$r];
-
-            if (isset($i[$c])) {
-                $l = \max($l, $i[$c] + 1);
+            if (isset($charMap[$char])) {
+                $left = \max($left, $charMap[$char] + 1);
             }
 
-            $i[$c] = $r;
-            $m = \max($m, $r - $l + 1);
+            $charMap[$char] = $right;
+            $maxLen = \max($maxLen, $right - $left + 1);
         }
 
-        return $m;
+        return $maxLen;
     }
 }
+
